@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Box from "./box";
 
@@ -14,15 +14,21 @@ const Boxes = styled.div`
 `;
 
 const Products = () => {
+  const [products = [], setProducts] = useState();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch("/api/products");
+      setProducts(await response.json());
+    };
+    fetchProducts();
+  }, []);
   return (
     <Container>
       <Boxes>
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
+        {products.map((item) => {
+          return <Box title={item.title} />;
+        })}
       </Boxes>
     </Container>
   );

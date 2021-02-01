@@ -1,6 +1,5 @@
-import React from "react";
+import React, { lazy } from "react";
 import styled from "styled-components";
-import Img1 from "../assets/portrait.png";
 
 const Container = styled.div`
   background-color: lightseagreen;
@@ -19,12 +18,12 @@ const Description = styled.div`
   font-size: 14px;
 `;
 
-const Box = () => {
+const Box = ({ title }) => {
   return (
     <Container>
-      <Image src={Img1} />
+      <Image src={`assets/${title}.png`} />
       <Text>
-        <Title>Product 1</Title>
+        <Title>{title}</Title>
         <Description>Awesome!</Description>
       </Text>
     </Container>
