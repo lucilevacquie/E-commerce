@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
+// import LocalMallRoundedIcon from "@material-ui/icons/LocalMallRounded";
+import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded";
+import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 
 const Container = styled.div`
   color: white;
@@ -12,32 +16,32 @@ const Links = styled.div`
 `;
 
 const Link = styled.div`
+  display: flex;
+  align-items: center;
   a {
     text-decoration: none;
     color: white;
   }
 `;
 
-const Icon = styled.img``;
-
 const Nav = () => {
   return (
     <Container>
       <Links>
         <Link>
-          <Icon />
+          <HomeRoundedIcon />
           <a href="/home">Home</a>
         </Link>
-        <Link>
-          <Icon />
+        {/* <Link>
+          <LocalMallRoundedIcon />
           <a href="/products">Products</a>
-        </Link>
+        </Link> */}
         <Link>
-          <Icon />
+          <ShoppingBasketRoundedIcon />
           <a href="/basket">Basket</a>
         </Link>
         <Link>
-          <Icon />
+          <AccountBoxRoundedIcon />
           <a href="/account">My account</a>
         </Link>
       </Links>

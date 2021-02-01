@@ -6,8 +6,6 @@ import Footer from "./footer";
 
 const Container = styled.div`
   height: 100vh;
-  display: grid;
-  grid-template-rows: 10% 70% 20%;
 `;
 
 const App = () => {
