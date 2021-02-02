@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 // import LocalMallRoundedIcon from "@material-ui/icons/LocalMallRounded";
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
+import Dropdown from "./accountDropdown";
 
-const Container = styled.div`
-  color: white;
-`;
+const Container = styled.div``;
 
 const Links = styled.div`
   width: 90%;
@@ -22,27 +21,42 @@ const Link = styled.div`
     text-decoration: none;
     color: white;
   }
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
 `;
 
 const Nav = () => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   return (
     <Container>
       <Links>
         <Link>
-          <HomeRoundedIcon />
-          <a href="/home">Home</a>
+          <a href="/home">
+            <HomeRoundedIcon />
+          </a>
         </Link>
         {/* <Link>
           <LocalMallRoundedIcon />
           <a href="/products">Products</a>
         </Link> */}
         <Link>
-          <ShoppingBasketRoundedIcon />
-          <a href="/basket">Basket</a>
+          <a href="/basket">
+            <ShoppingBasketRoundedIcon />
+          </a>
         </Link>
         <Link>
-          <AccountBoxRoundedIcon />
-          <a href="/account">My account</a>
+          <button
+            href="/account"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <AccountBoxRoundedIcon />
+            {showDropdown && <Dropdown />}
+          </button>
         </Link>
       </Links>
     </Container>

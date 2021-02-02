@@ -5,11 +5,11 @@ import Name from "./navbar-components/name";
 import Nav from "./navbar-components/links";
 
 const Container = styled.div`
-  height: 100px;
+  height: ${(props) => props.theme.navbarHeight};
   background-color: blue;
   width: 100%;
   display: grid;
-  grid-template-columns: 20% 30% 50%;
+  grid-template-columns: 20% 65% 15%;
   align-content: center;
 `;
 
