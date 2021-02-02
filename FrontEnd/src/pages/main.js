@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Carousel from "./main-components/carousel";
-import Products from "./main-components/products";
+import Carousel from "../main-components/carousel";
+import Products from "../main-components/products";
 
 const Container = styled.div`
   background-color: grey;

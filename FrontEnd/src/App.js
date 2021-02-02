@@ -1,7 +1,10 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./navbar";
-import Main from "./main";
+import Main from "./pages/main";
+import Basket from "./pages/basket";
+import Account from "./pages/account";
 import Footer from "./footer";
 
 const Container = styled.div`
@@ -11,8 +14,20 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container>
-      <Navbar />
-      <Main />
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/">
+            <Main />
+          </Route>
+          <Route path="/basket">
+            <Basket />
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+        </Switch>
+      </Router>
       <Footer />
     </Container>
   );

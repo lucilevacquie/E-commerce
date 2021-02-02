@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import { useLoginContext } from "../loginProvider";
+
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
-// import LocalMallRoundedIcon from "@material-ui/icons/LocalMallRounded";
 import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded";
 import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import Dropdown from "./accountDropdown";
@@ -14,7 +17,7 @@ const Links = styled.div`
   justify-content: space-between;
 `;
 
-const Link = styled.div`
+const ALink = styled.div`
   display: flex;
   align-items: center;
   a {
@@ -30,34 +33,38 @@ const Link = styled.div`
 `;
 
 const Nav = () => {
+  const { isLoggedIn } = useLoginContext();
+
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <Container>
       <Links>
-        <Link>
-          <a href="/home">
+        <ALink>
+          <Link href="/home">
             <HomeRoundedIcon />
-          </a>
-        </Link>
-        {/* <Link>
-          <LocalMallRoundedIcon />
-          <a href="/products">Products</a>
-        </Link> */}
-        <Link>
-          <a href="/basket">
+          </Link>
+        </ALink>
+        <ALink>
+          <Link href="/basket">
             <ShoppingBasketRoundedIcon />
-          </a>
-        </Link>
-        <Link>
-          <button
-            href="/account"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <AccountBoxRoundedIcon />
-            {showDropdown && <Dropdown />}
-          </button>
-        </Link>
+          </Link>
+        </ALink>
+        {isLoggedIn ? (
+          <ALink>
+            <button
+              href="/account"
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              <AccountBoxRoundedIcon />
+              {showDropdown && <Dropdown />}
+            </button>
+          </ALink>
+        ) : (
+          <div>
+            <button>Sign up | Log in</button>
+          </div>
+        )}
       </Links>
     </Container>
   );

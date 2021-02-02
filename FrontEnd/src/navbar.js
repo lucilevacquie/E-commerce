@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "./navbar-components/logo";
 import Name from "./navbar-components/name";
-import Nav from "./navbar-components/links";
+import Nav from "./navbar-components/nav";
 
 const Container = styled.div`
   height: ${(props) => props.theme.navbarHeight};
