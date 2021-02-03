@@ -4,11 +4,12 @@ import "./index.css";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
 import LoginProvider from "./loginProvider";
+import theme from "./theme";
 
 ReactDOM.render(
   <React.StrictMode>
     <LoginProvider>
-      <ThemeProvider theme={{ navbarHeight: "60px" }}>
+      <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </LoginProvider>

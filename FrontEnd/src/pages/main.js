@@ -1,19 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import Carousel from "../main-components/carousel";
 import Products from "../main-components/products";
+import WallOfFrame from "../assets/wallofframe.png";
 
 const Container = styled.div`
-  background-color: grey;
+  background-color: ${(props) => props.theme.colors.shell};
   height: 100%;
   display: grid;
-  grid-template-rows: 250px 1vh;
+  grid-template-rows: 350px 1vh;
+`;
+
+const Image = styled.img`
+  margin: auto;
 `;
 
 const Main = () => {
   return (
     <Container>
-      <Carousel />
+      <Image src={WallOfFrame} />
       <Products />
     </Container>
   );

@@ -4,10 +4,8 @@ import styled from "styled-components";
 
 import { useLoginContext } from "../loginProvider";
 
-import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
-import ShoppingBasketRoundedIcon from "@material-ui/icons/ShoppingBasketRounded";
-import AccountBoxRoundedIcon from "@material-ui/icons/AccountBoxRounded";
 import Dropdown from "./accountDropdown";
+import Login from "./login";
 
 const Container = styled.div``;
 
@@ -22,7 +20,7 @@ const ALink = styled.div`
   align-items: center;
   a {
     text-decoration: none;
-    color: white;
+    color: black;
   }
   button {
     border: none;
@@ -36,19 +34,17 @@ const Nav = () => {
   const { isLoggedIn } = useLoginContext();
 
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
+  console.log(showModal);
   return (
     <Container>
       <Links>
         <ALink>
-          <Link href="/home">
-            <HomeRoundedIcon />
-          </Link>
+          <Link href="/home">Home</Link>
         </ALink>
         <ALink>
-          <Link href="/basket">
-            <ShoppingBasketRoundedIcon />
-          </Link>
+          <Link href="/basket">Basket</Link>
         </ALink>
         {isLoggedIn ? (
           <ALink>
@@ -56,13 +52,14 @@ const Nav = () => {
               href="/account"
               onClick={() => setShowDropdown(!showDropdown)}
             >
-              <AccountBoxRoundedIcon />
+              My Account
               {showDropdown && <Dropdown />}
             </button>
           </ALink>
         ) : (
           <div>
-            <button>Sign up | Log in</button>
+            <button onClick={() => setShowModal(true)}>Sign up | Log in</button>
+            {showModal && <Login setShowModal={setShowModal} />}
           </div>
         )}
       </Links>

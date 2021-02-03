@@ -1,25 +1,76 @@
-import React from "react";
-import ReactModal from "react-modal";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useLoginContext } from "../loginProvider";
 
-const Container = styled.div``;
+const Container = styled.div`
+  /* display: ${(props) => (props.showModal ? "block" : "none")}; */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+`;
 
-const Login = () => {
+const Modal = styled.div`
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid black;
+  width: 30%;
+`;
+
+const CloseButton = styled.span`
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  :hover {
+    color: grey;
+    text-decoration: none;
+    cursor: pointer;
+  }
+`;
+
+const Title = styled.div`
+  text-align: center;
+  margin-top: 10px;
+`;
+
+const Form = styled.div`
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  button {
+    width: 40%;
+    margin: auto;
+  }
+`;
+
+const Signup = styled.div`
+  text-align: center;
+`;
+
+const Login = ({ setShowModal }) => {
   const { login } = useLoginContext();
 
   return (
-    <Container>
-      <div>Log in</div>
-      <div>
-        <input type="email" required>
-          Email
-        </input>
-        <input type="password" required>
-          Password
-        </input>
-      </div>
+    <Container onClick={() => setShowModal(false)}>
+      <Modal onClick={(e) => e.stopPropagation()}>
+        <CloseButton onClick={() => setShowModal(false)}>&times;</CloseButton>
+        <Title>Log in</Title>
+        <Form>
+          <input type="email" placeholder="Email" required></input>
+          <input type="password" placeholder="Password" required></input>
+          <button type="submit">Submit</button>
+        </Form>
+        <Signup>
+          Not register yet? <a href="/signup">Sign up</a>
+        </Signup>
+      </Modal>
     </Container>
   );
 };

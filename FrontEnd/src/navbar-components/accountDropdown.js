@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   position: absolute;
   right: 0;
-  top: ${(props) => props.theme.navbarHeight};
+  top: ${(props) => props.theme.sizes.navbarHeight};
   width: 200px;
 `;
 

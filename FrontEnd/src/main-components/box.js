@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   background-color: lightseagreen;
   box-sizing: border-box;
+  box-shadow: 5px 5px 10px #00000069;
 `;
 
 const Image = styled.img`
