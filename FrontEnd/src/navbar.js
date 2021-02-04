@@ -10,7 +10,7 @@ const Container = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 20% 50% 30%;
-  align-content: center;
+  align-items: center;
 `;
 
 const Navbar = () => {

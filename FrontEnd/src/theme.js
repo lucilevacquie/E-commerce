@@ -10,6 +10,9 @@ const theme = {
   sizes: {
     navbarHeight: "60px",
   },
+  fonts: {
+    satisfy: "'Satisfy', cursive",
+  },
 };
 
 export default theme;

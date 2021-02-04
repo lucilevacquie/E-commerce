@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useLoginContext } from "../loginProvider";
 
 const Container = styled.div`
-  /* display: ${(props) => (props.showModal ? "block" : "none")}; */
   position: fixed;
   z-index: 1;
   left: 0;
@@ -19,7 +18,6 @@ const Modal = styled.div`
   background-color: white;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid black;
   width: 30%;
 `;
 
