@@ -27,7 +27,7 @@ const Products = () => {
     <Container>
       <Boxes>
         {products.map((item) => {
-          return <Box title={item.title} />;
+          return <Box title={item.title} img={item.img} price={item.price} />;
         })}
       </Boxes>
     </Container>

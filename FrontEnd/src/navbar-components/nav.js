@@ -30,6 +30,16 @@ const ALink = styled.div`
   }
 `;
 
+const LoginButton = styled.div`
+  button {
+    font-size: 14px;
+    border: 1px solid black;
+    background-color: ${(props) => props.theme.colors.green};
+    padding: 3px;
+    cursor: pointer;
+  }
+`;
+
 const Nav = () => {
   const { isLoggedIn } = useLoginContext();
 
@@ -57,10 +67,10 @@ const Nav = () => {
             </button>
           </ALink>
         ) : (
-          <div>
+          <LoginButton>
             <button onClick={() => setShowModal(true)}>Sign up | Log in</button>
             {showModal && <Login setShowModal={setShowModal} />}
-          </div>
+          </LoginButton>
         )}
       </Links>
     </Container>

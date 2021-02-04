@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Container = styled.div`
   background-color: ${(props) => props.theme.colors.mango};
   box-sizing: border-box;
-  box-shadow: 5px 5px 10px #00000069;
   display: grid;
   grid-template-rows: 80% 20%;
 `;
@@ -29,15 +28,15 @@ const Price = styled.div`
   font-size: 14px;
 `;
 
-const Box = ({ title }) => {
+const Box = ({ title, img, price }) => {
   return (
     <Container>
       <ImageWrapper>
-        <Image src={`assets/${title}.png`} />
+        <Image src={img} />
       </ImageWrapper>
       <Text>
         <Title>{title}</Title>
-        <Price>£14.99</Price>
+        <Price>£{price}</Price>
       </Text>
     </Container>
   );

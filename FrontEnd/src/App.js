@@ -6,6 +6,7 @@ import Main from "./pages/main";
 import Basket from "./pages/basket";
 import Account from "./pages/account";
 import Footer from "./footer";
+import SignUp from "./pages/sign-up";
 
 const Container = styled.div`
   height: 100vh;
@@ -17,14 +18,17 @@ const App = () => {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Main />
           </Route>
-          <Route path="/basket">
+          <Route path="/pages/basket">
             <Basket />
           </Route>
-          <Route path="/account">
+          <Route path="/pages/account">
             <Account />
+          </Route>
+          <Route path="/pages/sign-up">
+            <SignUp />
           </Route>
         </Switch>
       </Router>

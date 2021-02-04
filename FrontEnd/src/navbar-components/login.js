@@ -42,9 +42,12 @@ const Form = styled.div`
   margin: 10px;
   display: flex;
   flex-direction: column;
+  input {
+    margin: 5px;
+  }
   button {
     width: 40%;
-    margin: auto;
+    margin: 5px auto;
   }
 `;
 
@@ -66,7 +69,7 @@ const Login = ({ setShowModal }) => {
           <button type="submit">Submit</button>
         </Form>
         <Signup>
-          Not register yet? <a href="/signup">Sign up</a>
+          Not register yet? <a href="/pages/sign-up">Sign up</a>
         </Signup>
       </Modal>
     </Container>
