@@ -22,6 +22,10 @@
 // module.exports = { getProducts };
 
 const mongoose = require("mongoose");
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useFindAndModify", false);
+mongoose.set("useCreateIndex", true);
+const bcrypt = require("bcrypt");
 const uri = `mongodb+srv://lucile:${process.env.DB_PASS}@cluster0.qdb4u.mongodb.net/bluce?retryWrites=true&w=majority`;
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -45,11 +49,45 @@ const getProducts = async () => {
 };
 
 const usersSchema = new mongoose.Schema({
-  firstname: String,
-  lastname: String,
-  email: String,
-  password: String,
+  firstname: {
+    type: String,
+    required: true,
+  },
+  lastname: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    match: /.+\@.+\..+/,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 });
+
+let SALT_WORK_FACTOR = 5;
+
+usersSchema.pre("save", function (next) {
+  console.log("hello");
+  const user = this;
+  if (!user.isModified("password")) return next();
+  bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, (err, hash) => {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+usersSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 const Users = mongoose.model("User", usersSchema);
 
@@ -63,9 +101,10 @@ const setUser = async (userData) => {
   await user.save();
 };
 
-const getUsers = async () => {
-  const users = await Users.find({});
-  return users;
+const getUser = async (email, password) => {
+  const user = await Users.findOne({ email });
+  await user.comparePassword(password);
+  return user;
 };
 
-module.exports = { getProducts, getUsers, setUser };
+module.exports = { getProducts, getUser, setUser };

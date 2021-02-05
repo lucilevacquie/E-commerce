@@ -26,6 +26,7 @@ const LoginProvider = ({ children }) => {
 
   const state = {
     isLoggedIn,
+    setIsLoggedIn,
     firstName,
     lastName,
     email,

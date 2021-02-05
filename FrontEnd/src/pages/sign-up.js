@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useLoginContext } from "../loginProvider";
 
@@ -27,8 +27,14 @@ const Form = styled.form`
 `;
 
 const SignUp = () => {
-  const submit = (event) => {
+  const { setIsLoggedIn } = useLoginContext();
+
+  const [loginError, setLoginError] = useState(false);
+
+  const submit = async (event) => {
     event.preventDefault();
+    //if email already in db -> alert "This email is already registered, please log in"
+    // if email not in db:
     const formData = new FormData(event.target);
     const userData = {
       firstName: formData.get("firstName"),
@@ -36,7 +42,7 @@ const SignUp = () => {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    fetch("/api/users", {
+    const res = await fetch("/api/users", {
       method: "post",
       headers: {
         Accept: "application/json",
@@ -44,6 +50,12 @@ const SignUp = () => {
       },
       body: JSON.stringify(userData),
     });
+    if (res.status === 200) {
+      window.location = "/";
+      setIsLoggedIn(true);
+      return;
+    }
+    setLoginError(true);
   };
   return (
     <Container>
@@ -60,6 +72,7 @@ const SignUp = () => {
         />
         <button type="submit">Submit</button>
       </Form>
+      {loginError && <div>This email already exists</div>}
     </Container>
   );
 };

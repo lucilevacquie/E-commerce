@@ -45,16 +45,14 @@ const Nav = () => {
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  console.log(showModal);
   return (
     <Container>
       <Links>
         <ALink>
-          <Link href="/home">Home</Link>
+          <Link to="/home">Home</Link>
         </ALink>
         <ALink>
-          <Link href="/basket">Basket</Link>
+          <Link to="/basket">Basket</Link>
         </ALink>
         {isLoggedIn ? (
           <ALink>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { useLoginContext } from "../loginProvider";
@@ -38,7 +38,7 @@ const Title = styled.div`
   margin-top: 10px;
 `;
 
-const Form = styled.div`
+const Form = styled.form`
   margin: 10px;
   display: flex;
   flex-direction: column;
@@ -56,14 +56,23 @@ const Signup = styled.div`
 `;
 
 const Login = ({ setShowModal }) => {
-  const { login } = useLoginContext();
+  const { setIsLoggedIn } = useLoginContext();
+
+  const submit = () => {
+    //compare db with login
+    //if email is in db and corresponds to password -> login
+    //if email is not in db -> alert "Not register, sign up" -> link to sign up page
+
+    window.location = "/";
+    setIsLoggedIn(true);
+  };
 
   return (
     <Container onClick={() => setShowModal(false)}>
       <Modal onClick={(e) => e.stopPropagation()}>
         <CloseButton onClick={() => setShowModal(false)}>&times;</CloseButton>
         <Title>Log in</Title>
-        <Form>
+        <Form onSubmit={(e) => submit(e)}>
           <input type="email" placeholder="Email" required></input>
           <input type="password" placeholder="Password" required></input>
           <button type="submit">Submit</button>
