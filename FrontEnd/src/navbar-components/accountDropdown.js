@@ -30,18 +30,14 @@ const Links = styled.div`
 `;
 
 const Dropdown = () => {
-  const { setIsLoggedIn } = useLoginContext();
-
-  const logOut = () => {
-    setIsLoggedIn(false);
-  };
+  const { logout } = useLoginContext();
 
   return (
     <Container>
       <Links>
         <a href="/account/my-profile">My Profile</a>
         <a href="/account/my-orders">My Orders</a>
-        <button onClick={() => logOut()}>Log Out</button>
+        <button onClick={() => logout()}>Log Out</button>
       </Links>
     </Container>
   );

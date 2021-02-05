@@ -51,6 +51,10 @@ const Form = styled.form`
   }
 `;
 
+const ErrorMsg = styled.div`
+  text-align: center;
+`;
+
 const Signup = styled.div`
   text-align: center;
 `;
@@ -67,7 +71,6 @@ const Login = ({ setShowModal }) => {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    console.log(userData);
     const res = await fetch("/api/users/login", {
       method: "post",
       headers: {
@@ -76,10 +79,10 @@ const Login = ({ setShowModal }) => {
       },
       body: JSON.stringify(userData),
     });
-    console.log(res);
     if (res.status === 200) {
       history.push("/");
       setIsLoggedIn(true);
+      setShowModal(false);
       return;
     }
     if (res.status === 401) {
@@ -104,7 +107,7 @@ const Login = ({ setShowModal }) => {
           ></input>
           <button type="submit">Submit</button>
         </Form>
-        {loginError && <div>{loginError}</div>}
+        {loginError && <ErrorMsg>{loginError}</ErrorMsg>}
         <Signup>
           Not register yet? <a href="/pages/sign-up">Sign up</a>
         </Signup>
