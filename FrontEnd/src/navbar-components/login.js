@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
+import { useHistory } from "react-router-dom";
 import { useLoginContext } from "../loginProvider";
 
 const Container = styled.div`
@@ -57,14 +57,36 @@ const Signup = styled.div`
 
 const Login = ({ setShowModal }) => {
   const { setIsLoggedIn } = useLoginContext();
+  const [loginError, setLoginError] = useState("");
+  const history = useHistory();
 
-  const submit = () => {
-    //compare db with login
-    //if email is in db and corresponds to password -> login
-    //if email is not in db -> alert "Not register, sign up" -> link to sign up page
-
-    window.location = "/";
-    setIsLoggedIn(true);
+  const submit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const userData = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    console.log(userData);
+    const res = await fetch("/api/users/login", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+    console.log(res);
+    if (res.status === 200) {
+      history.push("/");
+      setIsLoggedIn(true);
+      return;
+    }
+    if (res.status === 401) {
+      setLoginError("Wrong password");
+      return;
+    }
+    setLoginError("This email isn't register. Please sign up.");
   };
 
   return (
@@ -73,10 +95,16 @@ const Login = ({ setShowModal }) => {
         <CloseButton onClick={() => setShowModal(false)}>&times;</CloseButton>
         <Title>Log in</Title>
         <Form onSubmit={(e) => submit(e)}>
-          <input type="email" placeholder="Email" required></input>
-          <input type="password" placeholder="Password" required></input>
+          <input name="email" type="email" placeholder="Email" required></input>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          ></input>
           <button type="submit">Submit</button>
         </Form>
+        {loginError && <div>{loginError}</div>}
         <Signup>
           Not register yet? <a href="/pages/sign-up">Sign up</a>
         </Signup>

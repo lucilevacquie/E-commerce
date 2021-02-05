@@ -27,6 +27,7 @@ const ALink = styled.div`
     background-color: transparent;
     cursor: pointer;
     padding: 0;
+    font-size: 16px;
   }
 `;
 
@@ -49,7 +50,7 @@ const Nav = () => {
     <Container>
       <Links>
         <ALink>
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
         </ALink>
         <ALink>
           <Link to="/basket">Basket</Link>

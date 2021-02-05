@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useLoginContext } from "../loginProvider";
 
@@ -29,12 +30,12 @@ const Form = styled.form`
 const SignUp = () => {
   const { setIsLoggedIn } = useLoginContext();
 
-  const [loginError, setLoginError] = useState(false);
+  const [registerError, setRegisterError] = useState(false);
+
+  const history = useHistory();
 
   const submit = async (event) => {
     event.preventDefault();
-    //if email already in db -> alert "This email is already registered, please log in"
-    // if email not in db:
     const formData = new FormData(event.target);
     const userData = {
       firstName: formData.get("firstName"),
@@ -51,11 +52,11 @@ const SignUp = () => {
       body: JSON.stringify(userData),
     });
     if (res.status === 200) {
-      window.location = "/";
+      history.push("/");
       setIsLoggedIn(true);
       return;
     }
-    setLoginError(true);
+    setRegisterError(true);
   };
   return (
     <Container>
@@ -72,7 +73,7 @@ const SignUp = () => {
         />
         <button type="submit">Submit</button>
       </Form>
-      {loginError && <div>This email already exists</div>}
+      {registerError && <div>This email already exists</div>}
     </Container>
   );
 };

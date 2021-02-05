@@ -72,7 +72,6 @@ const usersSchema = new mongoose.Schema({
 let SALT_WORK_FACTOR = 5;
 
 usersSchema.pre("save", function (next) {
-  console.log("hello");
   const user = this;
   if (!user.isModified("password")) return next();
   bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
@@ -103,7 +102,10 @@ const setUser = async (userData) => {
 
 const getUser = async (email, password) => {
   const user = await Users.findOne({ email });
-  await user.comparePassword(password);
+  const isMatched = await user.comparePassword(password);
+  if (!isMatched) {
+    throw new Error("Wrong password");
+  }
   return user;
 };
 

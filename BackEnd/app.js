@@ -27,11 +27,14 @@ app.post("/api/users", async (req, res) => {
   res.send();
 });
 
-app.get("/api/users", async (req, res) => {
+app.post("/api/users/login", async (req, res) => {
   try {
-    const user = await getUser();
+    const user = await getUser(req.body.email, req.body.password);
     res.send(user);
   } catch (error) {
+    if (error.message === "Wrong password") {
+      return res.status(401).send(error);
+    }
     return res.status(500).send(error);
   }
 });
