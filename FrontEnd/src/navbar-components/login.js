@@ -60,17 +60,23 @@ const Signup = styled.div`
 `;
 
 const Login = ({ setShowModal }) => {
-  const { setIsLoggedIn } = useLoginContext();
+  const { login } = useLoginContext();
   const [loginError, setLoginError] = useState("");
   const history = useHistory();
 
   const submit = async (event) => {
+    // prevent the form from refreshing the page on submit
     event.preventDefault();
+    // create a new instance of FormData and pass this form element as the target
     const formData = new FormData(event.target);
+    // pull out the values of the form and save them to an object
     const userData = {
       email: formData.get("email"),
       password: formData.get("password"),
     };
+    // send a request to the backend, asking to log us in.
+    // the backend will check if the provided password in the object above matches the one
+    // stored in the database
     const res = await fetch("/api/users/login", {
       method: "post",
       headers: {
@@ -79,16 +85,27 @@ const Login = ({ setShowModal }) => {
       },
       body: JSON.stringify(userData),
     });
+    // at this point, we should have a response from the server, we can check the status code below
     if (res.status === 200) {
+      // 200 means the request was a success, so lets parse the user data out of the response
+      const user = await res.json();
+      // save the user data into state using our context provider
+      login({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+      });
+      // close the modal and navigate back to the homepage
       history.push("/");
-      setIsLoggedIn(true);
       setShowModal(false);
       return;
     }
+    // if the request failed, we will get a 401 instad of a 200
     if (res.status === 401) {
       setLoginError("Wrong password");
       return;
     }
+    // any other error code just show unknown email error
     setLoginError("This email isn't register. Please sign up.");
   };
 
@@ -109,7 +126,7 @@ const Login = ({ setShowModal }) => {
         </Form>
         {loginError && <ErrorMsg>{loginError}</ErrorMsg>}
         <Signup>
-          Not register yet? <a href="/pages/sign-up">Sign up</a>
+          Not register yet? <a href="/sign-up">Sign up</a>
         </Signup>
       </Modal>
     </Container>

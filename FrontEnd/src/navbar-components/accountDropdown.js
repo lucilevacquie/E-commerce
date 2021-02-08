@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useLoginContext } from "../loginProvider";
 
@@ -35,8 +36,8 @@ const Dropdown = () => {
   return (
     <Container>
       <Links>
-        <a href="/account/my-profile">My Profile</a>
-        <a href="/account/my-orders">My Orders</a>
+        <Link to="/account/profile">My Profile</Link>
+        <Link to="/account/orders">My Orders</Link>
         <button onClick={() => logout()}>Log Out</button>
       </Links>
     </Container>

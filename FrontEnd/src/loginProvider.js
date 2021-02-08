@@ -6,19 +6,23 @@ export const useLoginContext = () => useContext(loginContext);
 
 const LoginProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [firstName, setFirstState] = useState();
+  const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
 
-  const login = () => {
-    setFirstState(firstName);
-    setLastName(lastName);
-    setEmail(email);
+  const login = (user) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    setFirstName(user.firstname);
+    setLastName(user.lastname);
+    setEmail(user.email);
     setIsLoggedIn(true);
   };
 
+  console.log(firstName);
+
   const logout = () => {
-    setFirstState("");
+    localStorage.clear();
+    setFirstName("");
     setLastName("");
     setEmail("");
     setIsLoggedIn(false);
@@ -28,8 +32,11 @@ const LoginProvider = ({ children }) => {
     isLoggedIn,
     setIsLoggedIn,
     firstName,
+    setFirstName,
     lastName,
+    setLastName,
     email,
+    setEmail,
     login,
     logout,
   };

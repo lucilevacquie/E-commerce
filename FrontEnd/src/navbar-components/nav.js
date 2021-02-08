@@ -58,7 +58,7 @@ const Nav = () => {
         {isLoggedIn ? (
           <ALink>
             <button
-              href="/account"
+              href="/account/profile"
               onClick={() => setShowDropdown(!showDropdown)}
             >
               My Account
