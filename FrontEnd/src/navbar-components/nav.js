@@ -56,7 +56,7 @@ const Nav = () => {
           <Link to="/">Home</Link>
         </ALink>
         <ALink>
-          <Link to="/shop">Shop</Link>
+          <Link to="/tuto">Tuto</Link>
         </ALink>
         <ALink>
           <Link to="/reviews">Reviews</Link>

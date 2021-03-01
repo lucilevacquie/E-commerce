@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Products from "../main-components/products";
-import WallOfFrame from "../assets/wallofframe.png";
+import Carousel from "../main-components/carousel";
+import Menu from "../main-components/menu";
 
 const Container = styled.div`
   height: 100%;
@@ -9,22 +9,11 @@ const Container = styled.div`
   grid-template-rows: 350px 1vh;
 `;
 
-const Carousel = styled.div`
-  display: flex;
-  background-color: ${(props) => props.theme.colors.shell};
-`;
-
-const Image = styled.img`
-  margin: auto;
-`;
-
 const Main = () => {
   return (
     <Container>
-      <Carousel>
-        <Image src={WallOfFrame} />
-      </Carousel>
-      <Products />
+      <Carousel />
+      <Menu />
     </Container>
   );
 };
