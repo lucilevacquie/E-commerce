@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import Dots from "./dots";
+// import Dots from "./dots";
 import ArrowContainer from "./arrowContainer";
+
+import Img1 from "../assets/chicken_pollo-reddit.jpg";
+import Img2 from "../assets/Miyanomi-reddit.jpg";
+import Img3 from "../assets/flurpyflurples-reddit.jpg";
 
 const DataCarousel = {
   1: {
-    src: "../assets/chicken_pollo-reddit.jpg",
+    src: Img1,
     alt: "Credit to chicken_pollo on Reddit",
   },
   2: {
-    src: "../assets/Miyanomi-reddit.jpg",
+    src: Img2,
     alt: "Credit to Miyanomi on Reddit",
   },
   3: {
-    src: "../assets/flurpyflurples-reddit.jpg",
+    src: Img3,
     alt: "Credit to flurpyflurples on Reddit",
   },
 };
@@ -87,7 +91,7 @@ const Carousel = () => {
               )
           )}
         </Slide>
-        <Dots currentIndex={count} dataCarousel={DataCarousel} />
+        {/* <Dots currentIndex={count} dataCarousel={DataCarousel} /> */}
       </SlideContainer>
     </Container>
   );

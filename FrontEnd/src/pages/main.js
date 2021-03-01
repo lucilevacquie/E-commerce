@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Carousel from "../main-components/carousel";
 import Menu from "../main-components/menu";
+import Footer from "../footer";
 
 const Container = styled.div`
   height: 100%;
   display: grid;
-  grid-template-rows: 350px 1vh;
+  grid-template-rows: 100vh 500px 100px;
 `;
 
 const Main = () => {
@@ -14,6 +15,7 @@ const Main = () => {
     <Container>
       <Carousel />
       <Menu />
+      <Footer />
     </Container>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ArrowImg from "../assets/arrow-button.png";
 
 const ArrowButton = styled.div`
   position: absolute;
@@ -18,11 +19,7 @@ const Image = styled.img`
 const ArrowPrev = ({ onClickFunc }) => {
   return (
     <ArrowButton>
-      <Image
-        src="images/assets/arrow-button.png"
-        alt="Previous"
-        onClick={onClickFunc}
-      ></Image>
+      <Image src={ArrowImg} alt="Previous" onClick={onClickFunc}></Image>
     </ArrowButton>
   );
 };

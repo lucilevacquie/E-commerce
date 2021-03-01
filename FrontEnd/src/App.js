@@ -7,11 +7,11 @@ import Navbar from "./navbar";
 import Main from "./pages/main";
 import Basket from "./pages/basket";
 import Account from "./pages/account";
-import Footer from "./footer";
 import SignUp from "./pages/sign-up";
 
 const Container = styled.div`
   height: 100vh;
+  background-color: black;
 `;
 
 const App = () => {
@@ -48,7 +48,6 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-      <Footer />
     </Container>
   );
 };

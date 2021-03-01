@@ -5,6 +5,7 @@ const Container = styled.div`
   position: absolute;
   bottom: 5%;
   width: 100%;
+  text-align: center;
 `;
 
 const Dot = styled.div`
