@@ -7,17 +7,21 @@ import { useLoginContext } from "../loginProvider";
 import Dropdown from "./accountDropdown";
 import Login from "./login";
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 80% 20%;
+  font-family: "Spartan", sans-serif;
+`;
 
 const Links = styled.div`
-  width: 90%;
   display: flex;
-  justify-content: space-between;
 `;
 
 const ALink = styled.div`
   display: flex;
   align-items: center;
+  padding-right: 30px;
+  font-size: 12px;
   a {
     text-decoration: none;
     color: black;
@@ -27,7 +31,6 @@ const ALink = styled.div`
     background-color: transparent;
     cursor: pointer;
     padding: 0;
-    font-size: 16px;
   }
 `;
 
@@ -52,6 +55,14 @@ const Nav = () => {
         <ALink>
           <Link to="/">Home</Link>
         </ALink>
+        <ALink>
+          <Link to="/shop">Shop</Link>
+        </ALink>
+        <ALink>
+          <Link to="/reviews">Reviews</Link>
+        </ALink>
+      </Links>
+      <Links>
         <ALink>
           <Link to="/basket">Basket</Link>
         </ALink>

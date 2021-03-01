@@ -4,10 +4,14 @@ import Products from "../main-components/products";
 import WallOfFrame from "../assets/wallofframe.png";
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.shell};
   height: 100%;
   display: grid;
   grid-template-rows: 350px 1vh;
+`;
+
+const Carousel = styled.div`
+  display: flex;
+  background-color: ${(props) => props.theme.colors.shell};
 `;
 
 const Image = styled.img`
@@ -17,7 +21,9 @@ const Image = styled.img`
 const Main = () => {
   return (
     <Container>
-      <Image src={WallOfFrame} />
+      <Carousel>
+        <Image src={WallOfFrame} />
+      </Carousel>
       <Products />
     </Container>
   );
