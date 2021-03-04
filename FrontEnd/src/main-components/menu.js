@@ -11,14 +11,18 @@ import Case from "../assets/case.png";
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  grid-gap: 5px;
   grid-template-rows: repeat(3, 150px);
+  grid-gap: 10px;
+  margin: 50px;
 `;
 
-const Box1 = styled.div`
+const Box1 = styled.a`
   grid-row-start: 1;
   grid-row-end: 3;
-  background-color: red;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img1 = styled.img`
@@ -26,10 +30,13 @@ const Img1 = styled.img`
   height: 100%;
 `;
 
-const Box2 = styled.div`
+const Box2 = styled.a`
   grid-column-start: 2;
   grid-column-end: 4;
-  background-color: blue;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img2 = styled.img`
@@ -39,12 +46,15 @@ const Img2 = styled.img`
   margin: auto;
 `;
 
-const Box3 = styled.div`
+const Box3 = styled.a`
   grid-row-start: 1;
   grid-row-end: 4;
   grid-column-start: 4;
   grid-column-end: 5;
-  background-color: green;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img3 = styled.img`
@@ -52,12 +62,15 @@ const Img3 = styled.img`
   height: 100%;
 `;
 
-const Box4 = styled.div`
+const Box4 = styled.a`
   grid-row-start: 2;
   grid-row-end: 3;
   grid-column-start: 2;
   grid-column-end: 3;
-  background-color: violet;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img4 = styled.img`
@@ -67,12 +80,15 @@ const Img4 = styled.img`
   margin: auto;
 `;
 
-const Box5 = styled.div`
+const Box5 = styled.a`
   grid-row-start: 2;
   grid-row-end: 4;
   grid-column-start: 3;
   grid-column-end: 4;
-  background-color: pink;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img5 = styled.img`
@@ -80,12 +96,15 @@ const Img5 = styled.img`
   height: 100%;
 `;
 
-const Box6 = styled.div`
+const Box6 = styled.a`
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
-  background-color: turquoise;
+  :hover {
+    background-color: black;
+    opacity: 0.5;
+  }
 `;
 
 const Img6 = styled.img`
