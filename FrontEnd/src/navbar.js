@@ -5,7 +5,7 @@ import Nav from "./navbar-components/nav";
 
 const Container = styled.div`
   height: ${(props) => props.theme.sizes.navbarHeight};
-  background-color: ${(props) => props.theme.colors.shell};
+  background-color: ${(props) => props.theme.colors.blush};
   width: 100%;
   display: grid;
   grid-template-columns: 20% 80%;

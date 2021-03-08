@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useLoginContext } from "../loginProvider";
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.shell};
+  background-color: ${(props) => props.theme.colors.blush};
   height: 100%;
 `;
 

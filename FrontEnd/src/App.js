@@ -11,7 +11,6 @@ import SignUp from "./pages/sign-up";
 
 const Container = styled.div`
   height: 100vh;
-  background-color: black;
 `;
 
 const App = () => {

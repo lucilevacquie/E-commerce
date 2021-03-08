@@ -4,18 +4,18 @@ import styled from "styled-components";
 // import Dots from "./dots";
 import ArrowContainer from "./arrowContainer";
 
-import Img1 from "../assets/chicken_pollo-reddit.jpg";
-import Img2 from "../assets/Miyanomi-reddit.jpg";
+import Img1 from "../assets/Miyanomi-reddit.jpg";
+import Img2 from "../assets/chicken_pollo-reddit.jpg";
 import Img3 from "../assets/flurpyflurples-reddit.jpg";
 
 const DataCarousel = {
   1: {
     src: Img1,
-    alt: "Credit to chicken_pollo on Reddit",
+    alt: "Credit to Miyanomi on Reddit",
   },
   2: {
     src: Img2,
-    alt: "Credit to Miyanomi on Reddit",
+    alt: "Credit to chicken_pollo on Reddit",
   },
   3: {
     src: Img3,
@@ -25,7 +25,7 @@ const DataCarousel = {
 
 const Container = styled.div`
   display: flex;
-  background-color: ${(props) => props.theme.colors.shell};
+  background-color: ${(props) => props.theme.colors.blush};
   flex-direction: column;
   justify-content: center;
   overflow: hidden;

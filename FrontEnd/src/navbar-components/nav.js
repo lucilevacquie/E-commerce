@@ -38,7 +38,7 @@ const LoginButton = styled.div`
   button {
     font-size: 14px;
     border: 1px solid black;
-    background-color: ${(props) => props.theme.colors.green};
+    background-color: ${(props) => props.theme.colors.blue};
     padding: 3px;
     cursor: pointer;
   }
